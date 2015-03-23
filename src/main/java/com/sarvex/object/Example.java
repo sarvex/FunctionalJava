@@ -1,4 +1,4 @@
-package com.sarvex.functional;
+package com.sarvex.object;
 
 /**
  * Created by Sarvex on 23/03/2015.
@@ -11,13 +11,12 @@ public class Example {
 
     public static void main(final String[] args) {
 
-        final FunctionOverTime sales = (time) -> EXPECTED_SALES_JAN_TO_DEC[time - 1];
+        final Sales sales = new Sales(EXPECTED_SALES_JAN_TO_DEC);
 
-        final FunctionOverTime fixedCosts = (time) -> 15.0;
-        final FunctionOverTime incrementalCosts = (time) -> 5.1 + 0.15 * time;
+        final FixedCosts fixedCosts = new FixedCosts(15.0);
+        final IncrementalCosts incrementalCosts = new IncrementalCosts(5.1, 0.15);
 
-        final FunctionOverTime profit = (time) -> sales.valueAt(time)
-                - (fixedCosts.valueAt(time) + incrementalCosts.valueAt(time));
+        final Profit profit = new Profit(sales, incrementalCosts, fixedCosts);
 
         double total = 0.0;
 

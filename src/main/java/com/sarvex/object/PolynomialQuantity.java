@@ -1,4 +1,4 @@
-package com.sarvex.functional;
+package com.sarvex.object;
 
 /**
  * Created by Sarvex on 23/03/2015.
