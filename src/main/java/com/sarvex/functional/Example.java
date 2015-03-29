@@ -11,10 +11,10 @@ public class Example {
 
     public static void main(final String[] args) {
 
-        final FunctionOverTime sales = (time) -> EXPECTED_SALES_JAN_TO_DEC[time - 1];
+        final FunctionOverTime sales = FunctionOverTime.monthByMonth(EXPECTED_SALES_JAN_TO_DEC);
 
-        final FunctionOverTime fixedCosts = (time) -> 15.0;
-        final FunctionOverTime incrementalCosts = (time) -> 5.1 + 0.15 * time;
+        final FunctionOverTime fixedCosts = FunctionOverTime.constant(15.0);
+        final FunctionOverTime incrementalCosts = FunctionOverTime.line(5.1, 0.15);
 
         final FunctionOverTime profit = (time) -> sales.valueAt(time)
                 - (fixedCosts.valueAt(time) + incrementalCosts.valueAt(time));
